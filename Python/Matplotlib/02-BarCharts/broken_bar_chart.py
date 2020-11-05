@@ -3,16 +3,30 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 
-def main():
-    start, stop = dt.datetime(2012,3,1), dt.datetime(2012,4,1)
+data = [['mov eax, ebx', 0, 0.33], ['push esp', 0, 1], ['mov ecx, eax', 0.33, 0.66], ['xchg eax, data', 1, 17],
+        ['mov eax, ebx', 0.66, 1], ['push esp', 17, 18], ['mov ecx, eax', 1, 1.33], ['xchg eax, data', 18, 35],
+        ['mov eax, ebx', 1.33, 1.66], ['push esp', 35, 36], ['mov ecx, eax', 1.66, 2], ['xchg eax, data', 36, 53]]
+labels = [d[0] for d in data]
 
-    fig, ax = plt.subplots()
-    for color in ['blue', 'red', 'green']:
-        starts, stops = generate_data(start, stop)
-        plot_durations(starts, stops, ax, facecolor=color, alpha=0.5)
-    starts.reverse()
-    stops.reverse()
-    ax.invert_yaxis()
+def ticks(dat):
+    return dat[1], dat[2]
+
+def main():
+    #start, stop = dt.datetime(2012,3,1), dt.datetime(2012,4,1)
+
+    #fig, ax = plt.subplots()
+    #for color in ['blue', 'red', 'green']:
+        #starts, stops = generate_data(start, stop)
+        #plot_durations(starts, stops, ax, facecolor=color, alpha=0.5)
+    results = [ticks(dat) for dat in data]
+    start, stop = np.array(results).T
+    plt.barh(range(len(start)), stop-start, left=start)
+    plt.yticks(np.arange(len(labels)), (labels))
+    #start.reverse()
+    #stops.reverse()
+    plt.grid(axis='x')
+    plt.gca().invert_yaxis()
+    plt.tight_layout()
     plt.show()
 
 def plot_durations(starts, stops, ax=None, **kwargs):
