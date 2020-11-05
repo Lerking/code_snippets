@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import matplotlib as mpl
 
 data = [['mov eax, ebx', 0, 0.33], ['push esp', 0, 1], ['mov ecx, eax', 0.33, 0.66], ['xchg eax, data', 1, 17],
-        ['mov eax, ebx', 0.66, 1], ['push esp', 17, 18], ['mov ecx, eax', 1, 1.33], ['xchg eax, data', 18, 35],
-        ['mov eax, ebx', 1.33, 1.66], ['push esp', 35, 36], ['mov ecx, eax', 1.66, 2], ['xchg eax, data', 36, 53]]
+        ['mov eax, ebx', 0.66, 1], ['push esp', 1, 2], ['mov ecx, eax', 2, 2.33], ['xchg eax, data', 2.33, 18.33],
+        ['mov eax, ebx', 17, 17.33], ['push esp', 17.33, 18.33], ['mov ecx, eax', 18.33, 18.66], ['xchg eax, data', 18.33, 34.33]]
 labels = [d[0] for d in data]
 
 def ticks(dat):
